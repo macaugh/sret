@@ -39,16 +39,16 @@ def salesforce_tester(url):
 		log_message(f">> Concluding testing for {url}. {url} is not vulnerable")
 		return {'vulnerable':False}
 
-def main():
-	today = date.today()
-	formatted_date = today.strftime("%m/%d/%Y")
-	log_message(f"Scan date: {formatted_date}")
-	vulnerable_or_not = salesforce_tester(sys.argv[1])
-	print(vulnerable_or_not)
+def main(url):
+    today = date.today()
+    formatted_date = today.strftime("%m/%d/%Y")
+    log_message(f"Scan date: {formatted_date}")
+    vulnerability_rating = salesforce_tester(url)
+    return vulnerability_rating
 
-main()
-			
-
+if __name__ == "__main__":
+    url = sys.argv[1]
+    main(url)
 
 
 
